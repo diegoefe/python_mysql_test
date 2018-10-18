@@ -29,3 +29,5 @@ if DB.connect() == False:
     
 showtbs = Show_Tables()
 DB.execute(showtbs)
+
+print "Using driver '{0}'".format(DB.driver_name())

@@ -114,7 +114,8 @@ class DB_Session_MySQL:
     def must_rollback(self, code):
         return code == ERR_FATAL
 
-
+    def driver_name(self):
+        return "DB_Session_MySQL"
     
         
 
