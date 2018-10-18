@@ -4,14 +4,9 @@ from logger import *
 from traceback_info import *
 import sys
 
-ERR_ENDCOMMCHANNEL        =  3113
-ERR_NOTCONNECTED2ORACLE   =  3114
-ERR_CONNLOSTCONTACT       =  3135
-ERR_SESSIONKILLED         =    28
-ERR_DISCONNECTIONFORCED   =  1092
-ERR_NOTLOGGEDON           =  1012
-ERR_SVC_HND_NOT_INIT_ORA  = 24324
-ERR_CONNMUSTROLLBACK      = 25402
+ERR_1 = 1
+ERR_2 = 2
+ERR_FATAL = 3
 
 class DB_Session:
 
@@ -114,16 +109,10 @@ class DB_Session:
         return False
 
     def must_reconnect(self, code):
-        return code == ERR_ENDCOMMCHANNEL or\
-               code == ERR_NOTCONNECTED2ORACLE or\
-               code == ERR_CONNLOSTCONTACT or\
-               code == ERR_SESSIONKILLED  or\
-               code == ERR_DISCONNECTIONFORCED or\
-               code == ERR_NOTLOGGEDON or\
-               code == ERR_SVC_HND_NOT_INIT_ORA
+        return code == ERR_1 or code == ERR_2
 
     def must_rollback(self, code):
-        return code == ERR_CONNMUSTROLLBACK
+        return code == ERR_FATAL
 
 
     
