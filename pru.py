@@ -1,4 +1,5 @@
 from db_session import *
+import localconf as lc
 import sys
 
 class Show_Tables:
@@ -20,7 +21,7 @@ class Show_Tables:
         return cursor.rowcount
 
 
-DB = DB_Session("nubiuser", "nubipass", "IWAYDATA")
+DB = DB_Session(lc.user, lc.password, lc.db)
 if DB.connect() == False:
     print "Error connecting to DB. Aborting."
     sys.exit(1)
